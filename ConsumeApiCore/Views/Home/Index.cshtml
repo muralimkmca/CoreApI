@@ -1,0 +1,28 @@
+﻿@model IList<Emp>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a asp-action="AddEmployee" class="btn btn-primary"> Add Employee</a>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Employee Name</th>
+            <th>Employee Salary</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var res in Model)
+        {
+        <tr>
+            <td>@res.Id</td>
+            <td>@res.EmpName</td>
+            <td>@res.EmpSalary</td>
+            <form asp-action="deleteemp" method="post">
+                <td><input type="hidden" value="@res.Id" name="empid" /><button type="submit"> Delete </button></td>
+            </form>
+        </tr>
+        }
+    </tbody>
+</table>
